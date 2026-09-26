@@ -1,0 +1,101 @@
+/* general styling*/
+:root {
+  --text-color: #165e7b;
+  --bottom-color: #cde8e5;
+  --body-color: #eef7ff;
+
+  --white-text: #f2f9ff;
+  --general-padding: 1.5rem 3em;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--body-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+a:hover {
+  filter: brightness(150%);
+}
+
+/* header styling */
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 3rem;
+}
+
+.nav-links a {
+  font-weight: bold;
+}
+
+.home:hover {
+  filter: none;
+}
+
+.icon-img {
+  width: 32px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* main styling */
+
+.main-home,
+.main-about,
+.main-project {
+  min-height: 100vh;
+}
+
+.main-social {
+  background-color: var(--bottom-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  padding: var(--general-padding);
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links svg {
+  fill: var(--text-color);
+}
+
+/* footer styling */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 1.5rem;
+  background-color: var(--bottom-color);
+  color: var(--text-color);
+  padding: var(--general-padding);
+}
+
+.footer p {
+  font-size: smaller;
+}
