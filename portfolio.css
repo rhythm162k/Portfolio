@@ -31,6 +31,7 @@ a {
 
 a:hover {
   filter: brightness(150%);
+  transform: scale(110%);
 }
 
 /* header styling */
@@ -38,6 +39,7 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem 3rem;
+  position: relative;
 }
 
 .nav-links a {
@@ -58,6 +60,89 @@ a:hover {
   align-items: center;
 }
 
+.menu-bar-div {
+  display: none;
+}
+
+.menu-bar {
+  height: 32px;
+  width: 32px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.menu-bar-icon,
+.menu-bar-icon::before,
+.menu-bar-icon::after {
+  background-color: var(--text-color);
+  width: 20px;
+  height: 3px;
+  border-radius: 3px;
+  position: absolute;
+  transition: all 0.5s;
+}
+
+.menu-bar-icon::before,
+.menu-bar-icon::after {
+  content: "";
+}
+
+.menu-bar-icon::before {
+  transform: translateY(6px);
+}
+.menu-bar-icon::after {
+  transform: translateY(-6px);
+}
+
+.mobile-nav-links {
+  position: absolute;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #eef7ff80;
+  justify-content: center;
+  text-align: center;
+  border-bottom-right-radius: 48px;
+  border-bottom-left-radius: 48px;
+  gap: 1.5rem;
+  font-size: large;
+  font-weight: bolder;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.mobile-nav-links.open {
+  max-height: 50vh;
+}
+
+.menu-bar.open .menu-bar-icon {
+  background-color: transparent;
+  transform: rotate(-180deg);
+}
+.menu-bar.open .menu-bar-icon::before {
+  transform: rotate(45deg);
+}
+.menu-bar.open .menu-bar-icon::after {
+  transform: rotate(-45deg);
+}
+
+.mobile-nav-links a {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transition-delay: 0s;
+}
+
+.mobile-nav-links.open a {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
 /* main styling */
 
 .main-home,
@@ -98,4 +183,16 @@ a:hover {
 
 .footer p {
   font-size: smaller;
+}
+
+@media (max-width: 640px) {
+  .menu-bar-div {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .header .nav-links {
+    display: none;
+  }
 }
