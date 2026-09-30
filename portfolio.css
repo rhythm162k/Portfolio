@@ -1,11 +1,9 @@
-/* general styling*/
+/* || general styling*/
 :root {
-  --text-color: #165e7b;
-  --bottom-color: #cde8e5;
-  --body-color: #eef7ff;
-
-  --white-text: #f2f9ff;
+  --body-color: hsl(198, 96%, 10%);
+  --text-color: #fffff7;
   --general-padding: 1.5rem 3em;
+  --body-text: "Outfit";
 }
 
 html {
@@ -14,39 +12,55 @@ html {
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
+  background-color: var(--body-color);
   font-family:
     -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--body-color);
 }
 
 a {
-  text-decoration: none;
+  transition: all 0.3s ease;
   color: var(--text-color);
+  text-decoration: none;
 }
 
 a:hover {
+  transform: scale(120%);
   filter: brightness(150%);
-  transform: scale(110%);
 }
 
-/* header styling */
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+/* || header styling */
 .header {
   display: grid;
+  position: fixed;
+  top: 0;
+  left: 50%;
   grid-template-columns: 1fr 1fr;
+  transform: translateX(-50%);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background-color: hsla(198, 96%, 10%, 0.85);
   padding: 1rem 3rem;
-  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  height: 81px;
 }
 
 .nav-links a {
   font-weight: bold;
 }
 
-.home:hover {
+.home-icon:hover {
   filter: none;
 }
 
@@ -64,102 +78,52 @@ a:hover {
   display: none;
 }
 
-.menu-bar {
-  height: 32px;
-  width: 32px;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.mobile-nav {
+  display: none;
+}
+/* || main styling */
+
+.main {
+  color: var(--text-color);
+  font-family: var(--body-text);
 }
 
-.menu-bar-icon,
-.menu-bar-icon::before,
-.menu-bar-icon::after {
-  background-color: var(--text-color);
-  width: 20px;
-  height: 3px;
-  border-radius: 3px;
-  position: absolute;
-  transition: all 0.5s;
-}
-
-.menu-bar-icon::before,
-.menu-bar-icon::after {
-  content: "";
-}
-
-.menu-bar-icon::before {
-  transform: translateY(6px);
-}
-.menu-bar-icon::after {
-  transform: translateY(-6px);
-}
-
-.mobile-nav-links {
-  position: absolute;
-  grid-column: span 2;
-  display: flex;
-  flex-direction: column;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 0;
-  overflow: hidden;
-  background-color: #eef7ff80;
-  justify-content: center;
-  text-align: center;
-  border-bottom-right-radius: 48px;
-  border-bottom-left-radius: 48px;
-  gap: 1.5rem;
-  font-size: large;
-  font-weight: bolder;
-  transition: max-height 0.3s ease-in-out;
-}
-
-.mobile-nav-links.open {
-  max-height: 50vh;
-}
-
-.menu-bar.open .menu-bar-icon {
-  background-color: transparent;
-  transform: rotate(-180deg);
-}
-.menu-bar.open .menu-bar-icon::before {
-  transform: rotate(45deg);
-}
-.menu-bar.open .menu-bar-icon::after {
-  transform: rotate(-45deg);
-}
-
-.mobile-nav-links a {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  transition-delay: 0s;
-}
-
-.mobile-nav-links.open a {
-  opacity: 1;
-  transition-delay: 0.2s;
-}
-/* main styling */
-
-.main-home,
-.main-about,
-.main-project {
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
 }
 
+.introduction {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 1em;
+  padding: var(--general-padding);
+}
+
+.image-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.person {
+  position: absolute;
+  bottom: 0;
+  height: 85vh;
+}
+
 .main-social {
-  background-color: var(--bottom-color);
-  color: var(--text-color);
   display: flex;
   flex-direction: column;
-  padding: var(--general-padding);
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  background-color: var(--body-color);
+  padding: var(--general-padding);
+  color: var(--text-color);
 }
 
 .social-links {
@@ -175,10 +139,9 @@ a:hover {
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 1.5rem;
-  background-color: var(--bottom-color);
-  color: var(--text-color);
+  background-color: var(--body-color);
   padding: var(--general-padding);
+  color: var(--text-color);
 }
 
 .footer p {
@@ -186,6 +149,20 @@ a:hover {
 }
 
 @media (max-width: 640px) {
+  .introduction {
+    grid-column: span 2;
+  }
+
+  .image-container {
+    grid-column-start: 2;
+  }
+
+  .short-intro {
+    width: 50%;
+  }
+  .person {
+    height: 60vh;
+  }
   .menu-bar-div {
     display: flex;
     justify-content: end;
@@ -194,5 +171,91 @@ a:hover {
 
   .header .nav-links {
     display: none;
+  }
+  .menu-bar {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+  }
+
+  .menu-bar-icon,
+  .menu-bar-icon::before,
+  .menu-bar-icon::after {
+    position: absolute;
+    transition: all 0.5s ease;
+    border-radius: 3px;
+    background-color: var(--text-color);
+    width: 20px;
+    height: 3px;
+  }
+
+  .menu-bar-icon::before,
+  .menu-bar-icon::after {
+    content: "";
+  }
+
+  .menu-bar-icon::before {
+    transform: translateY(6px);
+  }
+  .menu-bar-icon::after {
+    transform: translateY(-6px);
+  }
+
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    mask-image: linear-gradient(
+      to bottom,
+      hsl(198, 96%, 10%) 80%,
+      transparent 100%
+    );
+    transition: max-height 0s ease;
+    background-color: hsla(198, 96%, 10%, 0.85);
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: var(--general-padding);
+    overflow: hidden;
+    font-weight: bolder;
+    font-size: large;
+    text-align: center;
+  }
+
+  .mobile-nav.open {
+    min-height: 50vh;
+    max-height: 100vh;
+  }
+
+  .menu-bar.open .menu-bar-icon {
+    transform: rotate(-180deg);
+    background-color: transparent;
+  }
+  .menu-bar.open .menu-bar-icon::before {
+    transform: rotate(45deg);
+  }
+  .menu-bar.open .menu-bar-icon::after {
+    transform: rotate(-45deg);
+  }
+
+  .links a {
+    color: var(--text-color);
   }
 }

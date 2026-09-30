@@ -5,35 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Md.Sami-El Bashar Rhythm</title>
     <link rel="stylesheet" href="./portfolio.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <script src="./portfolio.js" defer></script>
   </head>
   <body>
     <div class="container">
-      <div class="header">
+      <header class="header">
         <div class="icon">
-          <a href="#home" class="home"
+          <a href="#home" class="home-icon"
             ><img class="icon-img" src="./src/Dumb.png" alt="icon"
           /></a>
         </div>
         <div class="nav-links">
-          <a href="#about" class="about">About</a>
-          <a href="#project" class="project">Projects</a>
-          <a href="#social" class="social">Socials</a>
+          <a href="#about">About</a>
+          <a href="#project">Projects</a>
+          <a href="#social">Socials</a>
         </div>
         <div class="menu-bar-div">
           <div class="menu-bar">
             <div class="menu-bar-icon"></div>
           </div>
         </div>
-        <div class="mobile-nav-links">
-          <a href="#about" class="about mobile-nav-btn">About</a>
-          <a href="#project" class="project mobile-nav-btn">Projects</a>
-          <a href="#social" class="social mobile-nav-btn">Socials</a>
+      </header>
+      <nav class="mobile-nav">
+        <div class="links">
+          <a href="#about" class="mobile-nav-btn">About</a>
+          <a href="#project" class="mobile-nav-btn">Projects</a>
+          <a href="#social" class="mobile-nav-btn">Socials</a>
         </div>
-      </div>
+      </nav>
       <main class="main">
-        <section id="home" class="main-home"></section>
-        <section id="about" class="main-about"></section>
+        <section id="home" class="home">
+          <div class="introduction">
+            <h1 class="name">
+              Hey there! <br />
+              This is Rhythm
+            </h1>
+            <p class="short-intro">
+              I'm a Software Geek. I love everything about software and how they
+              tick and building my knowledge upon it. I think, I learn and then
+              turn my thoughts into a craft that I enjoy interacting with.
+            </p>
+          </div>
+          <div class="image-container">
+            <img class="person" src="./src/me.png" alt="Me" />
+          </div>
+        </section>
+        <!-- <section id="about" class="main-about"></section>
         <section id="project" class="main-project"></section>
         <section id="social" class="main-social">
           <a
@@ -103,17 +126,17 @@
               </svg>
             </a>
           </div>
-        </section>
+        </section> -->
       </main>
-      <footer class="footer">
+      <!-- <footer class="footer">
         <p class="footer-text">&copy; Rhythm Co.</p>
         <div class="nav-links">
-          <a href="#home" class="home">Home</a>
-          <a href="#about" class="about">About</a>
-          <a href="#project" class="project">Projects</a>
-          <a href="#social" class="social">Socials</a>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#project">Projects</a>
+          <a href="#social">Socials</a>
         </div>
-      </footer>
+      </footer> -->
     </div>
   </body>
 </html>
